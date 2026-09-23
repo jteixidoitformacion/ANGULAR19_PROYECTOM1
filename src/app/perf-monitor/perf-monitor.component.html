@@ -1,0 +1,31 @@
+<section class="performance-panel" aria-labelledby="performance-title">
+  <header>
+    <div>
+      <p class="panel-label">Estado de procesamiento</p>
+      <h3 id="performance-title">Monitor de rendimiento</h3>
+    </div>
+    <span class="latency-value">{{ latencia() }} <small>ms</small></span>
+  </header>
+
+  <div class="meter" aria-hidden="true">
+    <span [style.width.%]="Math.min(latencia() / 2, 100)"></span>
+  </div>
+
+  <div class="diagnosis">
+    <span>Diagnóstico calculado</span>
+    <strong>{{ eficiencia() }}</strong>
+  </div>
+
+  <div class="controls">
+    <button class="button button-primary" type="button" (click)="incrementarLatencia()">Simular carga +50 ms</button>
+    <button class="button button-secondary" type="button" (click)="restablecerLatencia()">Restablecer</button>
+  </div>
+
+  <label class="manual-control" for="latency-input">
+    <span>Establecer latencia manualmente</span>
+    <div>
+      <input #miinput id="latency-input" type="number" min="0" step="10" [value]="latencia()" />
+      <button class="button button-outline" type="button" (click)="establecerLatencia(miinput.valueAsNumber)">Aplicar</button>
+    </div>
+  </label>
+</section>

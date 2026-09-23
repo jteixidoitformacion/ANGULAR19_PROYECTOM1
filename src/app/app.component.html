@@ -1,0 +1,76 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<main class="learning-shell">
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="IT Formación, inicio">
+      <span class="brand-mark">IT</span>
+      <span>Formación</span>
+    </a>
+    <p>Angular 19 · Módulo 01</p>
+    <span class="trainer">Jordi Teixidó · Formador</span>
+  </header>
+
+  <section id="inicio" class="intro" aria-labelledby="page-title">
+    <div>
+      <p class="eyebrow">Itinerario práctico</p>
+      <h1 id="page-title">{{ title }}</h1>
+      <p class="intro-copy">Introducción y setup. Explora las tres prácticas del temario y comprueba cómo responde Angular a cada interacción.</p>
+    </div>
+    <div class="module-progress" aria-label="Tres ejercicios del módulo">
+      <strong>03</strong>
+      <span>prácticas<br>completas</span>
+    </div>
+  </section>
+
+  <section class="workspace" aria-label="Prácticas del módulo">
+    <aside class="exercise-index">
+      <div class="index-heading">
+        <p class="eyebrow">Índice del módulo</p>
+        <h2>Ejercicios</h2>
+      </div>
+      <nav aria-label="Selecciona una práctica">
+        @for (exercise of exercises; track exercise.id) {
+          <button
+            class="exercise-button"
+            [class.is-active]="exerciseId() === exercise.id"
+            (click)="selectExercise(exercise.id)">
+            <span class="exercise-number">{{ exercise.number }}</span>
+            <span class="exercise-label">{{ exercise.label }}</span>
+            <span class="exercise-status" aria-hidden="true"></span>
+          </button>
+        }
+      </nav>
+      <p class="index-note">Selecciona una práctica para abrir su entorno interactivo.</p>
+    </aside>
+
+    <section class="practice-area" aria-live="polite">
+      @if (exerciseId() === 'signals') {
+        <div class="practice-heading">
+          <p class="eyebrow">Ejercicio 01</p>
+          <h2>Monitor de rendimiento</h2>
+          <p>Modifica la latencia y observa cómo <code>computed()</code> actualiza el diagnóstico.</p>
+        </div>
+        <app-perf-monitor />
+      } @else if (exerciseId() === 'resource') {
+        <div class="practice-heading">
+          <p class="eyebrow">Ejercicio 02</p>
+          <h2>Buscador reactivo de usuarios</h2>
+          <p>Cambia el identificador para consultar datos con la API <code>resource()</code>.</p>
+        </div>
+        <app-user-loader />
+      } @else {
+        <div class="practice-heading">
+          <p class="eyebrow">Ejercicio final</p>
+          <h2>Panel de microservicios</h2>
+          <p>Combina estado derivado y <code>linkedSignal()</code> en un caso de integración.</p>
+        </div>
+        <app-dashboard-integrador />
+      }
+    </section>
+  </section>
+
+  <footer class="site-footer">
+    <span>IT Formación · Java EE 8 Front-End</span>
+    <span>Angular v19</span>
+  </footer>
+</main>

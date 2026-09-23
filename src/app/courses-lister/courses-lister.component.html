@@ -1,0 +1,12 @@
+@for (course of courses(); track course.id) {
+  <div class="course-item {{ $first ? 'first-course-item' : '' }} {{ $last ? 'last-course-item' : '' }}">
+    <h3>{{ course.title }}</h3>
+    <p>index: {{ $index }}</p>
+    <p>first: {{ $first }}</p>
+    <p>last: {{ $last }}</p>
+    <p>count: {{ $count }}</p>
+    <p>Duración: {{ course.hours }} horas</p>
+  </div>
+} @empty {
+  <p class="no-data">No hay cursos disponibles actualmente.</p>
+}

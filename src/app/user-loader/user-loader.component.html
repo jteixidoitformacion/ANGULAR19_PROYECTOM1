@@ -1,0 +1,22 @@
+<section class="user-panel" aria-labelledby="user-loader-title">
+  <header>
+    <p class="panel-label">Consulta asíncrona</p>
+    <h3 id="user-loader-title">Buscador de usuarios</h3>
+    <p>Introduce un identificador del 1 al 10 para recuperar un perfil de prueba.</p>
+  </header>
+
+  <label for="user-id">ID de usuario</label>
+  <input id="user-id" type="number" min="1" max="10" [value]="userId()" (input)="actualizarId($event)" />
+
+  <div class="resource-result" aria-live="polite">
+    @if (userResource.isLoading()) {
+      <p class="loading">Consultando el recurso...</p>
+    } @else if (userResource.error()) {
+      <p class="error">No se ha encontrado ese usuario. Prueba con un ID entre 1 y 10.</p>
+    } @else if (userResource.value()) {
+      <p class="result-label">Resultado disponible</p>
+      <strong>{{ userResource.value()?.name }}</strong>
+      <span>Usuario #{{ userResource.value()?.id }}</span>
+    }
+  </div>
+</section>

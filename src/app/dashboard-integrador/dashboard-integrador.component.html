@@ -1,0 +1,57 @@
+<section class="dashboard" aria-labelledby="dashboard-title">
+  <header class="dashboard-header">
+    <div>
+      <p class="panel-label">Ejercicio de integración</p>
+      <h3 id="dashboard-title">Panel de microservicios</h3>
+    </div>
+    <span class="version">Angular 19</span>
+  </header>
+
+  <section class="server-selector" aria-labelledby="server-title">
+    <div>
+      <p class="step">01</p>
+      <h4 id="server-title">Nodo de tráfico</h4>
+    </div>
+    <div class="server-buttons">
+      <button type="button" [class.active]="servidorActivo() === 'Norteamerica'" (click)="seleccionarServidor('Norteamerica')">América del Norte</button>
+      <button type="button" [class.active]="servidorActivo() === 'Europa'" (click)="seleccionarServidor('Europa')">Europa occidental</button>
+    </div>
+    <div class="linked-route">
+      <span>Ruta de pruebas vinculada</span>
+      <code>{{ rutaServidor() }}</code>
+      <button type="button" (click)="personalizarRuta()">Usar ruta local</button>
+    </div>
+  </section>
+
+  <div class="dashboard-grid">
+    <section class="services" aria-labelledby="services-title">
+      <div class="section-title">
+        <p class="step">02</p>
+        <h4 id="services-title">Latencias individuales</h4>
+      </div>
+      <ul>
+        @for (ms of microservicios(); track ms.nombre) {
+          <li>
+            <span>{{ ms.nombre }}</span>
+            <strong [class.is-slow]="ms.latencia > 120">{{ ms.latencia }} ms</strong>
+            <button type="button" (click)="simularRetardo(ms.nombre)">Añadir 50 ms</button>
+          </li>
+        }
+      </ul>
+      <button class="reset-button" type="button" (click)="reiniciarMetricas()">Restaurar métricas</button>
+    </section>
+
+    <section class="health" aria-labelledby="health-title">
+      <div class="section-title">
+        <p class="step">03</p>
+        <h4 id="health-title">Diagnóstico calculado</h4>
+      </div>
+      <p>Latencia media del conjunto</p>
+      <strong class="average">{{ latenciaPromedio() }} <small>ms</small></strong>
+      <div class="health-status" [class.is-healthy]="estadoSalud().saludable" [class.is-alert]="!estadoSalud().saludable">
+        <span>Estado del sistema</span>
+        <strong>{{ estadoSalud().mensaje }}</strong>
+      </div>
+    </section>
+  </div>
+</section>

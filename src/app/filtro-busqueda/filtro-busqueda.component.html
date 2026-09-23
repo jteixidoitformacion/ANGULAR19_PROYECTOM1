@@ -1,0 +1,7 @@
+<input
+  [value]="termino()"
+  (input)="actualizarTermino($event)"
+  placeholder="Buscar servicio..."
+/>
+<button (click)="limpiar()">Restablecer</button>
+<span>Filtro actual: {{ termino() }}</span>

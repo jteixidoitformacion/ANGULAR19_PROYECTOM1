@@ -1,0 +1,95 @@
+.user-panel {
+	--panel-ink: #112d3c;
+	--panel-muted: #5d6d75;
+	--panel-line: #d9d4c8;
+	--panel-teal: #087f79;
+	--panel-coral: #ed6547;
+	max-width: 640px;
+	padding: clamp(22px, 4vw, 38px);
+	border: 1px solid var(--panel-line);
+	background: #fffdf8;
+	color: var(--panel-ink);
+}
+
+header p:last-child {
+	max-width: 480px;
+	margin: 10px 0 28px;
+	color: var(--panel-muted);
+	font-size: 0.92rem;
+	line-height: 1.55;
+}
+
+.panel-label,
+.result-label {
+	margin: 0 0 7px;
+	color: var(--panel-teal);
+	font-size: 0.69rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+h3 {
+	margin: 0;
+	font-family: Georgia, serif;
+	font-size: clamp(1.4rem, 3vw, 2rem);
+	font-weight: 500;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--panel-muted);
+	font-size: 0.78rem;
+	font-weight: 700;
+}
+
+input {
+	width: min(100%, 180px);
+	min-height: 44px;
+	border: 1px solid var(--panel-ink);
+	border-radius: 0;
+	background: #fff;
+	color: var(--panel-ink);
+	font: 1rem Consolas, "Courier New", monospace;
+	padding-inline: 12px;
+}
+
+input:focus-visible {
+	outline: 2px solid var(--panel-teal);
+	outline-offset: 2px;
+}
+
+.resource-result {
+	display: grid;
+	gap: 7px;
+	min-height: 104px;
+	margin-top: 26px;
+	padding: 20px;
+	border-left: 3px solid var(--panel-teal);
+	background: #e5f1ef;
+}
+
+.resource-result strong {
+	font-family: Georgia, serif;
+	font-size: 1.35rem;
+	font-weight: 500;
+}
+
+.resource-result span,
+.loading,
+.error {
+	margin: 0;
+	color: var(--panel-muted);
+	font-size: 0.85rem;
+}
+
+.loading {
+	color: var(--panel-teal);
+	font-weight: 700;
+}
+
+.error {
+	color: #a43220;
+	font-weight: 700;
+}

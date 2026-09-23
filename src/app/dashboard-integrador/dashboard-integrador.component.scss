@@ -1,0 +1,280 @@
+.dashboard {
+	--panel-ink: #112d3c;
+	--panel-muted: #5d6d75;
+	--panel-line: #d9d4c8;
+	--panel-teal: #087f79;
+	--panel-coral: #ed6547;
+	padding: clamp(20px, 4vw, 38px);
+	border: 1px solid var(--panel-ink);
+	background: #fffdf8;
+	color: var(--panel-ink);
+}
+
+.dashboard-header,
+.server-selector,
+.server-buttons,
+.linked-route,
+.section-title,
+.services li {
+	display: flex;
+	align-items: center;
+}
+
+.dashboard-header {
+	justify-content: space-between;
+	gap: 20px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid var(--panel-line);
+}
+
+.panel-label,
+.step {
+	margin: 0 0 6px;
+	color: var(--panel-teal);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+h3,
+h4 {
+	margin: 0;
+	font-family: Georgia, serif;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+h4 {
+	font-size: 1.12rem;
+}
+
+.version {
+	padding: 7px 9px;
+	background: var(--panel-ink);
+	color: #fff;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.server-selector {
+	display: grid;
+	grid-template-columns: 0.8fr 1.5fr 2fr;
+	gap: 18px;
+	padding: 24px 0;
+	border-bottom: 1px solid var(--panel-line);
+}
+
+.server-buttons {
+	gap: 7px;
+	flex-wrap: wrap;
+}
+
+button {
+	min-height: 34px;
+	border: 1px solid var(--panel-ink);
+	border-radius: 0;
+	background: transparent;
+	color: var(--panel-ink);
+	cursor: pointer;
+	font: 700 0.72rem "Trebuchet MS", sans-serif;
+	padding: 7px 9px;
+}
+
+button:hover,
+button:focus-visible {
+	outline: 2px solid var(--panel-teal);
+	outline-offset: 2px;
+}
+
+.server-buttons button.active,
+.reset-button {
+	background: var(--panel-ink);
+	color: #fff;
+}
+
+.linked-route {
+	display: grid;
+	align-items: start;
+	gap: 7px;
+	padding-left: 18px;
+	border-left: 3px solid var(--panel-coral);
+	font-size: 0.77rem;
+}
+
+.linked-route span {
+	color: var(--panel-muted);
+}
+
+code {
+	overflow-wrap: anywhere;
+	color: var(--panel-teal);
+	font: 0.75rem Consolas, "Courier New", monospace;
+}
+
+.linked-route button {
+	width: fit-content;
+	min-height: 28px;
+	border: 0;
+	padding: 0;
+	color: var(--panel-teal);
+	text-decoration: underline;
+}
+
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: 1.25fr 0.75fr;
+	gap: 24px;
+	padding-top: 24px;
+}
+
+.services,
+.health {
+	min-width: 0;
+}
+
+.section-title {
+	gap: 14px;
+	margin-bottom: 17px;
+}
+
+.section-title .step {
+	margin-bottom: 0;
+}
+
+ul {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.services li {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto auto;
+	gap: 12px;
+	padding: 10px 0;
+	border-top: 1px solid var(--panel-line);
+	font-size: 0.82rem;
+}
+
+.services li > span {
+	font-weight: 700;
+}
+
+.services li strong {
+	color: var(--panel-teal);
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 0.78rem;
+}
+
+.services li strong.is-slow {
+	color: #a43220;
+}
+
+.services li button {
+	min-height: 26px;
+	border-color: var(--panel-line);
+	font-size: 0.65rem;
+	padding: 4px 6px;
+}
+
+.reset-button {
+	width: 100%;
+	margin-top: 18px;
+}
+
+.health {
+	display: flex;
+	flex-direction: column;
+	padding-left: 24px;
+	border-left: 1px solid var(--panel-line);
+}
+
+.health > p {
+	margin: auto 0 4px;
+	color: var(--panel-muted);
+	font-size: 0.78rem;
+}
+
+.average {
+	color: var(--panel-coral);
+	font-family: Georgia, serif;
+	font-size: clamp(3rem, 7vw, 5.5rem);
+	font-weight: 500;
+	line-height: 1;
+}
+
+.average small {
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 0.8rem;
+}
+
+.health-status {
+	display: grid;
+	gap: 6px;
+	margin-top: 20px;
+	padding: 14px;
+	border-left: 3px solid;
+	font-size: 0.78rem;
+}
+
+.health-status span {
+	color: var(--panel-muted);
+}
+
+.health-status.is-healthy {
+	border-color: var(--panel-teal);
+	background: #e5f1ef;
+}
+
+.health-status.is-alert {
+	border-color: var(--panel-coral);
+	background: #faeae5;
+}
+
+@media (max-width: 760px) {
+	.server-selector,
+	.dashboard-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.linked-route,
+	.health {
+		padding-left: 0;
+		border-left: 0;
+	}
+
+	.linked-route {
+		border-top: 3px solid var(--panel-coral);
+		padding-top: 12px;
+	}
+
+	.health {
+		border-top: 1px solid var(--panel-line);
+		padding-top: 24px;
+	}
+
+	.health > p {
+		margin-top: 0;
+	}
+}
+
+@media (max-width: 470px) {
+	.dashboard-header,
+	.services li {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.services li {
+		grid-template-columns: 1fr;
+		gap: 6px;
+	}
+}

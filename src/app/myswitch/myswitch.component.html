@@ -1,0 +1,14 @@
+@switch (color()) {
+  @case ("rojo") {
+    <div class="rojo"></div>
+  }
+  @case ("amarillo") {
+    <div class="amarillo"></div>
+  }
+  @default {
+    <div class="verde"></div>
+  }
+}
+<button (click)="cambiarColor('rojo')">Rojo</button>
+<button (click)="cambiarColor('amarillo')">Amarillo</button>
+<button (click)="cambiarColor('verde')">Verde</button> 
